@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "677363691640",
+    "project_id": "craftify-capstone",
+    "storage_bucket": "craftify-capstone.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:677363691640:android:fdd7e2e39b44cc487b3d8d",
+        "android_client_info": {
+          "package_name": "com.craftify.craftify_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAs_fa0GdeZhUc4pce8c7n4kcXKkiBsm5c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
