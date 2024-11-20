@@ -6,7 +6,7 @@ plugins {
 
 android {
     namespace = "com.craftify.craftify_app"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.craftify.craftify_app"
