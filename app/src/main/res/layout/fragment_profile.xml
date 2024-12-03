@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context=".ui.profile.ProfileFragment">
+
+        <!-- CardView -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_profile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:padding="10dp"
+                android:background="@drawable/button_primary">
+
+                <ImageView
+                    android:id="@+id/img_profile"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginStart="4dp"
+                    android:background="@drawable/button_clear_less_rounded"
+                    android:src="@drawable/login_image"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_username"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:text="Igo Wisnu"
+                    android:fontFamily="@font/poppinsbold"
+                    android:textSize="18sp"
+                    android:textColor="@color/white"
+                    app:layout_constraintStart_toEndOf="@id/img_profile"
+                    app:layout_constraintTop_toTopOf="@id/img_profile" />
+
+                <TextView
+                    android:id="@+id/tv_email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginTop="5dp"
+                    android:text="igowisnu@gmail.com"
+                    android:fontFamily="@font/poppinsregular"
+                    android:textSize="14sp"
+                    android:textColor="@color/white"
+                    app:layout_constraintStart_toEndOf="@id/img_profile"
+                    app:layout_constraintTop_toBottomOf="@id/tv_username" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Buttons -->
+        <Button
+            android:id="@+id/btn_blog"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginHorizontal="32dp"
+            android:background="@drawable/button_clear"
+            android:backgroundTint="@null"
+            android:drawableStart="@drawable/baseline_notifications_none_24"
+            android:text="My Blog"
+            android:textAlignment="textStart"
+            android:textColor="@color/black"
+            android:fontFamily="@font/poppinsregular"
+            app:backgroundTint="@null"
+            app:layout_constraintTop_toBottomOf="@id/card_profile" />
+
+        <Button
+            android:id="@+id/btn_save"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginHorizontal="32dp"
+            android:background="@drawable/button_clear"
+            android:drawableStart="@drawable/baseline_bookmark"
+            android:text="Saved"
+            android:textAlignment="textStart"
+            android:textColor="@color/black"
+            android:fontFamily="@font/poppinsregular"
+            app:backgroundTint="@null"
+            app:layout_constraintTop_toBottomOf="@id/btn_blog" />
+
+        <Button
+            android:id="@+id/btn_nightmode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginHorizontal="32dp"
+            android:background="@drawable/button_clear"
+            android:drawableStart="@drawable/baseline_night"
+            android:text="Nightmode"
+            android:textAlignment="textStart"
+            android:textColor="@color/black"
+            android:fontFamily="@font/poppinsregular"
+            app:backgroundTint="@null"
+            app:layout_constraintTop_toBottomOf="@id/btn_save" />
+
+        <Button
+            android:id="@+id/btn_aboutus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginHorizontal="32dp"
+            android:background="@drawable/button_clear"
+            android:drawableStart="@drawable/baseline_question"
+            android:text="About Us"
+            android:textAlignment="textStart"
+            android:textColor="@color/black"
+            android:fontFamily="@font/poppinsregular"
+            app:backgroundTint="@null"
+            app:layout_constraintTop_toBottomOf="@id/btn_nightmode" />
+
+        <Button
+            android:id="@+id/button_5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginHorizontal="32dp"
+            android:layout_marginBottom="20dp"
+            android:backgroundTint="@null"
+            android:background="@drawable/button_rounded_red"
+            android:text="Logout"
+            android:textSize="18sp"
+            android:fontFamily="@font/poppinsbold"
+            app:layout_constraintTop_toBottomOf="@id/btn_aboutus" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
+

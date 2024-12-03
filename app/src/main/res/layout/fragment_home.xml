@@ -6,17 +6,150 @@
     android:layout_height="match_parent"
     tools:context=".ui.home.HomeFragment">
 
+
     <TextView
-        android:id="@+id/text_home"
-        android:layout_width="match_parent"
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="20dp"
+        android:text="CRAFTIFY"
+        android:textColor="@color/lightgreen"
+        android:fontFamily="@font/poppinsextrabold"
+        android:textSize="30sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/button_clear_less_rounded"
+        android:src="@drawable/baseline_notifications_none_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+
+        />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        app:cardCornerRadius="16dp"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        tools:layout_editor_absoluteX="1dp">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/button_primary"
+            tools:layout_editor_absoluteX="-1dp"
+            tools:layout_editor_absoluteY="99dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="From Waste to Wonder"
+                android:textColor="@color/white"
+                android:fontFamily="@font/poppinsextrabold"
+                android:textSize="30sp"
+                android:paddingHorizontal="10dp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppinssemibold"
+                android:textColor="@color/white"
+                android:paddingHorizontal="10dp"
+                android:text="Discover creative DIY ideas to transform everyday trash into beautiful, functional, and sustainable items."
+                android:textSize="16sp" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        app:cardCornerRadius="16dp"
+        app:layout_constraintTop_toBottomOf="@+id/card1"
+        tools:layout_editor_absoluteX="1dp">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:background="@drawable/img_home"
+            android:orientation="vertical"
+            tools:layout_editor_absoluteX="-1dp"
+            tools:layout_editor_absoluteY="99dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+
+                android:background="@drawable/button_clear_less_rounded_white"
+                android:src="@drawable/baseline_arrow_forward_white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppinsextrabold"
+                android:paddingHorizontal="10dp"
+                android:text="Scan Your Trash And Transform To Something Useful"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <Button
+        android:id="@+id/btn_how"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="32dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/button_secondary"
+        app:backgroundTint="@null"
+        android:fontFamily="@font/poppinsbold"
+        android:text="How to Use Craftify?"
+        android:paddingVertical="15dp"
+        android:textSize="18sp"
+        app:layout_constraintTop_toBottomOf="@+id/card2"
+        tools:layout_editor_absoluteX="16dp" />
+
+    <Button
+        android:id="@+id/btn_blog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="32dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/button_secondary"
+        app:backgroundTint="@null"
+        android:fontFamily="@font/poppinsbold"
+        android:text="Upload Your Craation"
+        android:paddingVertical="15dp"
+        android:textSize="18sp"
+        app:layout_constraintTop_toBottomOf="@+id/btn_how"
+        tools:layout_editor_absoluteX="16dp" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
