@@ -1,36 +1,60 @@
 [versions]
 agp = "8.6.1"
+cameraCore = "1.5.1"
+cameraLifecycle = "1.5.1"
+cameraView = "1.5.1"
+coreKtxVersion = "1.14.0"
+datastorePreferences = "1.0.0"
 kotlin = "1.9.0"
 coreKtx = "1.15.0"
 junit = "4.13.2"
 junitVersion = "1.2.1"
 espressoCore = "3.6.1"
 appcompat = "1.7.0"
+kotlinxCoroutinesCore = "1.5.2"
+lifecycleViewmodelKtxVersion = "2.6.1"
 material = "1.12.0"
 constraintlayout = "2.2.0"
 lifecycleLivedataKtx = "2.8.7"
 lifecycleViewmodelKtx = "2.8.7"
+materialVersion = "1.12.10"
 navigationFragmentKtx = "2.8.3"
 navigationUiKtx = "2.8.3"
+activity = "1.8.0"
 googleGmsGoogleServices = "4.4.2"
 firebaseAuth = "23.1.0"
-activity = "1.9.3"
 firebaseFirestore = "25.1.1"
 
+
 [libraries]
+androidx-camera-camera2 = { module = "androidx.camera:camera-camera2" }
+androidx-camera-core = { module = "androidx.camera:camera-core" }
+androidx-camera-lifecycle = { module = "androidx.camera:camera-lifecycle" }
+androidx-camera-view = { module = "androidx.camera:camera-view" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+androidx-core-ktx-v1140 = { module = "androidx.core:core-ktx", version.ref = "coreKtxVersion" }
+androidx-datastore-preferences = { module = "androidx.datastore:datastore-preferences", version.ref = "datastorePreferences" }
+androidx-lifecycle-viewmodel-ktx-v261 = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycleViewmodelKtxVersion" }
+camera-core = { module = "androidx.camera:camera-core", version.ref = "cameraCore" }
+camera-lifecycle = { module = "androidx.camera:camera-lifecycle", version.ref = "cameraLifecycle" }
+camera-view = { module = "androidx.camera:camera-view", version.ref = "cameraView" }
+converter-gson = { module = "com.squareup.retrofit2:converter-gson" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinxCoroutinesCore" }
+kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinxCoroutinesCore" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 androidx-lifecycle-livedata-ktx = { group = "androidx.lifecycle", name = "lifecycle-livedata-ktx", version.ref = "lifecycleLivedataKtx" }
 androidx-lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifecycleViewmodelKtx" }
 androidx-navigation-fragment-ktx = { group = "androidx.navigation", name = "navigation-fragment-ktx", version.ref = "navigationFragmentKtx" }
 androidx-navigation-ui-ktx = { group = "androidx.navigation", name = "navigation-ui-ktx", version.ref = "navigationUiKtx" }
-firebase-auth = { group = "com.google.firebase", name = "firebase-auth", version.ref = "firebaseAuth" }
+material-v11210 = { module = "com.google.android.material:material", version.ref = "materialVersion" }
 androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
+firebase-auth = { group = "com.google.firebase", name = "firebase-auth", version.ref = "firebaseAuth" }
+retrofit = { module = "com.squareup.retrofit2:retrofit" }
 firebase-firestore = { group = "com.google.firebase", name = "firebase-firestore", version.ref = "firebaseFirestore" }
 
 [plugins]
