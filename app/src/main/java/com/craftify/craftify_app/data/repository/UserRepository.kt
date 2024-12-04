@@ -1,22 +1,27 @@
 package com.craftify.craftify_app.data.repository
 
 import com.craftify.craftify_app.data.model.User
-import com.google.firebase.auth.FirebaseAuth
+import com.craftify.craftify_app.data.Result
+import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.tasks.await
 
-class UserRepository {
-    private val auth = FirebaseAuth.getInstance()
-
-    suspend fun registerUser(email : String, username : String, password : String) : Result<User>{
+class UserRepository(private val db : FirebaseFirestore)  {
+    suspend fun getUser (uid : String) : User {
         return try {
-            val authResult = auth.createUserWithEmailAndPassword(email, password).await()
-            val userId = authResult.user?.uid?: throw Exception("User ID is null")
-
-            val user = User(id = userId, email = email, username = username)
-
-            Result.success(user)
-        } catch (e : Exception){
-            Result.failure(e)
+            val documentSnapshot = db.collection("users").document(uid).get().await()
+            if (documentSnapshot.exists()) {
+                val user = documentSnapshot.data ?: throw Exception("User data is empty")
+                val userData = User(
+                    username = user["username"] as? String,
+                    email = user["email"] as? String,
+                    profile_picture = user["profile_picture"] as? String
+                )
+                userData
+            } else {
+                throw Exception("User does not exists")
+            }
+        } catch (e : Exception) {
+            throw Exception(e.message)
         }
     }
 }

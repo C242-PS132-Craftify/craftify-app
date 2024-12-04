@@ -88,6 +88,5 @@ dependencies {
     implementation(libs.kotlinx.coroutines.core)
     implementation(libs.kotlinx.coroutines.android)
 
-
-
+    implementation ("com.google.guava:guava:31.1-android")
 }
