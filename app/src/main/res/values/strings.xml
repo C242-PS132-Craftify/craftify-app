@@ -14,5 +14,11 @@
     <string name="input_password">Insert your password</string>
     <string name="register">Register</string>
     <string name="already_had_an_account_login">Already had an account? Login</string>
+    <string name="username">Username</string>
+    <string name="email_hint">youremail.gmail.com</string>
+    <string name="password">password</string>
+    <string name="enter_your_passwod">Enter your passwod</string>
+    <string name="email">Email</string>
+    <string name="username_hint">Enter your username</string>
 
 </resources>
