@@ -24,6 +24,7 @@ activity = "1.8.0"
 googleGmsGoogleServices = "4.4.2"
 firebaseAuth = "23.1.0"
 firebaseFirestore = "25.1.1"
+swiperefreshlayout = "1.1.0"
 
 
 [libraries]
@@ -56,6 +57,7 @@ androidx-activity = { group = "androidx.activity", name = "activity", version.re
 firebase-auth = { group = "com.google.firebase", name = "firebase-auth", version.ref = "firebaseAuth" }
 retrofit = { module = "com.squareup.retrofit2:retrofit" }
 firebase-firestore = { group = "com.google.firebase", name = "firebase-firestore", version.ref = "firebaseFirestore" }
+androidx-swiperefreshlayout = { group = "androidx.swiperefreshlayout", name = "swiperefreshlayout", version.ref = "swiperefreshlayout" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

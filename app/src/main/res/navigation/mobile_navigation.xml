@@ -19,14 +19,17 @@
         <action
             android:id="@+id/action_to_fragmentReuslt"
             app:destination="@id/fragment_result" />
-
     </fragment>
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.craftify.craftify_app.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        android:id="@+id/navigation_blog"
+        android:name="com.craftify.craftify_app.ui.blog.BlogFragment"
+        android:label="@string/blog"
+        tools:layout="@layout/fragment_blog">
+        <action
+            android:id="@+id/action_navigation_blog_to_blogDetailsFragment"
+            app:destination="@id/blogDetailsFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_profile"
@@ -39,5 +42,16 @@
         android:name="com.craftify.craftify_app.ui.result.ResultFragment"
         android:label="Result"
         tools:layout="@layout/fragment_result" />
+
+    <fragment
+        android:id="@+id/blogDetailsFragment"
+        android:name="com.craftify.craftify_app.ui.blog.BlogDetailsFragment"
+        android:label="@string/blog_details"
+        tools:layout="@layout/fragment_blog_details" >
+        <argument
+            android:name="blogId"
+            app:argType="string"
+            />
+    </fragment>
 
 </navigation>

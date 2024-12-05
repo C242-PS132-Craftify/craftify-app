@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.google.gms.google.services)
     id("kotlin-parcelize")
+    id("androidx.navigation.safeargs.kotlin")
 }
 
 android {
@@ -41,6 +42,7 @@ android {
 }
 
 dependencies {
+    implementation(libs.androidx.swiperefreshlayout)
     val cameraxVersion = "1.3.0"
 
     implementation(libs.androidx.core.ktx)
