@@ -5,7 +5,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.craftify.craftify_app.data.Result
-import com.craftify.craftify_app.data.model.RegistrationResult
 import com.craftify.craftify_app.data.repository.AuthRepository
 import com.craftify.craftify_app.data.repository.UserRepository
 import com.google.firebase.auth.FirebaseUser

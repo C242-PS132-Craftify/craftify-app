@@ -23,6 +23,12 @@ class LoginActivity : AppCompatActivity() {
         binding = FragmentLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        loginViewModel.currentUser.observe(this){ user ->
+            if (user != null) {
+                navigateToHome()
+            }
+        }
+
         loginViewModel.loginResult.observe(this) { result ->
             when (result) {
                 is  Result.Success-> {
@@ -32,11 +38,6 @@ class LoginActivity : AppCompatActivity() {
                     Toast.makeText(this,result.error, Toast.LENGTH_SHORT ).show()
                 }
                 else -> {}
-            }
-        }
-        loginViewModel.currentUser.observe(this){ user ->
-            if (user != null) {
-                navigateToHome()
             }
         }
 

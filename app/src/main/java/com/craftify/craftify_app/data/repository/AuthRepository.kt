@@ -49,4 +49,16 @@ class AuthRepository (private val auth : FirebaseAuth, private val db : Firebase
     fun isUserLoggedIn(): Boolean {
         return auth.currentUser != null
     }
+
+    companion object {
+        @Volatile
+        private var instance: AuthRepository? = null
+        fun getInstance(
+            auth: FirebaseAuth,
+            db: FirebaseFirestore
+        ): AuthRepository =
+            instance ?: synchronized(this) {
+                instance ?: AuthRepository(auth, db)
+            }.also { instance = it }
+    }
 }

@@ -24,4 +24,15 @@ class UserRepository(private val db : FirebaseFirestore)  {
             throw Exception(e.message)
         }
     }
+
+    companion object {
+        @Volatile
+        private var instance: UserRepository? = null
+        fun getInstance(
+            db: FirebaseFirestore
+        ): UserRepository =
+            instance ?: synchronized(this) {
+                instance ?: UserRepository(db)
+            }.also { instance = it }
+    }
 }

@@ -20,5 +20,15 @@
     <string name="enter_your_passwod">Enter your passwod</string>
     <string name="email">Email</string>
     <string name="username_hint">Enter your username</string>
+    <string name="explore_masterpiece">Explore Masterpiece</string>
+    <string name="add_button_description">Add</string>
+    <string name="blog_image_description">Blog Image</string>
+    <string name="blog">Blog</string>
+    <string name="blogdetailfragment">BlogDetailFragment</string>
+    <string name="blog_details">Blog Details</string>
+    <string name="blog_title">Title</string>
+    <string name="user">user</string>
+    <string name="lorem_ipsum_dolor_sit_amet">Lorem ipsum dolor sit amet...</string>
+    <string name="date_format">YYYY/MM/DD</string>
 
 </resources>
