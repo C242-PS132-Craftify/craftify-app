@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.tutorial.TutorialFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+
+        <Button
+            android:id="@+id/btn_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_clear_less_rounded"
+            android:drawableLeft="@drawable/baseline_arrow_back_ios_24"
+            android:text="Back"
+            android:textSize="12sp"
+            android:textColor="@color/black"
+            android:backgroundTint="@null"
+            android:layout_marginBottom="12dp"
+            android:paddingVertical="0dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginHorizontal="32dp"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="How To Use Craftify"
+            android:gravity="center"
+            android:fontFamily="@font/poppinsextrabold"
+            android:textSize="20sp"
+            android:layout_marginTop="20dp"
+            />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:src="@drawable/login_image"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="32dp"
+            android:fontFamily="@font/poppinsregular"
+            android:text="How to scan trash and turn into something usefull"
+            android:textSize="18sp"
+            android:layout_marginTop="20dp"
+
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="32dp"
+            android:fontFamily="@font/poppinsregular"
+            android:text="1. Open The Scan Menu"
+            android:textSize="18sp"
+            android:layout_marginTop="20dp"
+
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="32dp"
+            android:fontFamily="@font/poppinsregular"
+            android:text="2. Capture the trash that you want to scan or select the image from gallery"
+            android:textSize="16sp"
+            android:layout_marginTop="10dp"
+
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="32dp"
+            android:fontFamily="@font/poppinsregular"
+            android:text="2. Capture the trash that you want to scan or select the image from gallery"
+            android:textSize="16sp"
+            android:layout_marginTop="10dp"
+
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="32dp"
+            android:fontFamily="@font/poppinsregular"
+            android:text="3. Click the Analyze Button"
+            android:textSize="16sp"
+            android:layout_marginTop="10dp"
+
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="32dp"
+            android:fontFamily="@font/poppinsregular"
+            android:text="4. Select and click the craft that you interested"
+            android:textSize="16sp"
+            android:layout_marginTop="10dp"
+
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="32dp"
+            android:fontFamily="@font/poppinsregular"
+            android:text="6. Enjoy your craft time"
+            android:textSize="16sp"
+            android:layout_marginTop="10dp"
+
+            />
+
+
+    </LinearLayout>
+
+</ScrollView>

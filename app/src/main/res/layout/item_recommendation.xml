@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="10dp"
-    android:layout_marginHorizontal="32dp"
+    android:background="@color/base_light"
     >
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -14,13 +14,12 @@
         <ImageView
             android:id="@+id/img_card"
             android:layout_width="match_parent"
-            android:layout_height="130dp"
+            android:layout_height="wrap_content"
             android:layout_marginHorizontal="10dp"
             android:layout_marginTop="10dp"
             android:contentDescription="Craft Image"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:background="@drawable/button_clear_less_rounded"
             />
 
         <TextView
@@ -31,7 +30,8 @@
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="30dp"
-            android:layout_marginHorizontal="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="30dp"
             android:textSize="18sp"
             android:fontFamily="@font/poppinsbold"
             />
@@ -41,7 +41,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:contentDescription="Save"
-            android:src="@drawable/baseline_favorite_border_24"
+            android:src="@drawable/baseline_bookmark"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 

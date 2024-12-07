@@ -3,8 +3,8 @@ package com.craftify.craftify_app.ui.scan
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.craftify.craftify_app.data.server.api.DetectionsItem
-import com.craftify.craftify_app.data.server.api.RecommendationsItem
+import com.craftify.craftify_app.data.server.response.DetectionsItem
+import com.craftify.craftify_app.data.server.response.RecommendationsItem
 
 class ScanViewModel : ViewModel() {
     private val _detectionsList = MutableLiveData<List<DetectionsItem>>()
