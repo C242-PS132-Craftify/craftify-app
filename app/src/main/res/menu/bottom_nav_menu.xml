@@ -8,6 +8,7 @@
 
     <item
         android:id="@+id/navigation_scan"
+
         android:icon="@drawable/scan_icon"
         android:title="@string/scan_tittle" />
 
