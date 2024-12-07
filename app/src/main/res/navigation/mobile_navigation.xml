@@ -9,7 +9,11 @@
         android:id="@+id/navigation_home"
         android:name="com.craftify.craftify_app.ui.home.HomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+            <action
+                android:id="@+id/action_to_fragmentCraftDetail"
+                app:destination="@id/fragment_craft_detail" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_scan"
@@ -38,6 +42,27 @@
         android:id="@+id/fragment_result"
         android:name="com.craftify.craftify_app.ui.result.ResultFragment"
         android:label="Result"
-        tools:layout="@layout/fragment_result" />
+        tools:layout="@layout/fragment_result">
+
+        <action
+            android:id="@+id/action_to_fragmentCraftDetail"
+            app:destination="@id/fragment_craft_detail" />
+
+        <action
+            android:id="@+id/back_to_fragmentScan"
+            app:destination="@id/navigation_scan" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_craft_detail"
+        android:name="com.craftify.craftify_app.ui.craft.DetailCraftFragment"
+        android:label="Detail"
+        tools:layout="@layout/fragment_detail_craft">
+
+        <action
+            android:id="@+id/back_to_fragmentResult"
+            app:destination="@id/fragment_result"
+            />
+    </fragment>
 
 </navigation>

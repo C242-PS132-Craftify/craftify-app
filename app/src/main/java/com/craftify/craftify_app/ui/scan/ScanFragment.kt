@@ -1,8 +1,6 @@
 package com.craftify.craftify_app.ui.scan
 
 import android.content.ContentValues.TAG
-import android.content.Context
-import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Build
@@ -14,7 +12,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.camera.core.CameraSelector
 import androidx.camera.core.ImageCapture
@@ -22,28 +19,19 @@ import androidx.camera.core.ImageCaptureException
 import androidx.camera.core.Preview
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.content.ContextCompat
-import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.craftify.craftify_app.R
 import com.craftify.craftify_app.data.server.api.ApiConfig
-import com.craftify.craftify_app.data.server.api.FileUploadResponse
-import com.craftify.craftify_app.data.server.api.PredictResponse
+import com.craftify.craftify_app.data.server.response.PredictResponse
 import com.craftify.craftify_app.databinding.FragmentScanBinding
-import com.craftify.craftify_app.ui.result.ResultFragment
-import com.google.gson.Gson
-import kotlinx.coroutines.launch
 
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody.Companion.asRequestBody
-import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
-import retrofit2.HttpException
 import retrofit2.Response
 import java.io.File
 
@@ -218,12 +206,17 @@ class ScanFragment : Fragment() {
         val model = ViewModelProvider(requireActivity(), ViewModelProvider.NewInstanceFactory()).get(ScanViewModel::class.java)
         Log.d("ViewModelCheck", "Fragment1 ViewModel: ${model.hashCode()}")
 
+        // Show the ProgressBar
+        val progressBar = binding.progressBar // Assuming you're using ViewBinding
+        progressBar.visibility = View.VISIBLE
+
         call.enqueue(object : Callback<PredictResponse> {
             override fun onResponse(
                 call: Call<PredictResponse>,
                 response: Response<PredictResponse>
             ) {
                 if (response.isSuccessful) {
+                    progressBar.visibility = View.GONE
                     Toast.makeText(requireContext(), "Image uploaded successfully!", Toast.LENGTH_SHORT).show()
                     Log.d(TAG, "onResponse: success \n $response")
                     val detections = response.body()?.data?.detections?.filterNotNull()
@@ -236,10 +229,13 @@ class ScanFragment : Fragment() {
                 } else {
                     Toast.makeText(requireContext(), "Upload failed: ${response.code()}", Toast.LENGTH_SHORT).show()
                     Log.d(TAG, "onResponse: failed \n $response")
+                    progressBar.visibility = View.GONE
                 }
             }
 
             override fun onFailure(call: Call<PredictResponse>, t: Throwable) {
+                progressBar.visibility = View.GONE
+                Log.d("Errrormessage", "Error: ${t.message}")
                 Toast.makeText(requireContext(), "Error: ${t.message}", Toast.LENGTH_SHORT).show()
             }
         })

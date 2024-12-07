@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.craftify.craftify_app.R
-import com.craftify.craftify_app.data.server.api.DetectionsItem
+import com.craftify.craftify_app.data.server.response.DetectionsItem
 
 class DetectionsAdapter(private val detections: List<DetectionsItem>) :
     RecyclerView.Adapter<DetectionsAdapter.DetectionViewHolder>() {

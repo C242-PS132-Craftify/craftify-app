@@ -1,5 +1,6 @@
 package com.craftify.craftify_app.ui.result
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,10 +9,9 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.craftify.craftify_app.R
-import com.craftify.craftify_app.data.server.api.DetectionsItem
-import com.craftify.craftify_app.data.server.api.RecommendationsItem
+import com.craftify.craftify_app.data.server.response.RecommendationsItem
 
-class RecommendationAdapter(private val recommen: List<RecommendationsItem>) :
+class RecommendationAdapter(private val recommen: List<RecommendationsItem>, private val listener: OnItemClickListener) :
 
     RecyclerView.Adapter<RecommendationAdapter.RecommendationViewHolder>() {
 
@@ -32,6 +32,12 @@ class RecommendationAdapter(private val recommen: List<RecommendationsItem>) :
         Glide.with(holder.itemView.context)
             .load(recommendation.projectImg)
             .into(holder.image)
+
+        // Set click listener
+        holder.itemView.setOnClickListener {
+            listener.onItemClick(recommendation.projectName)
+            Log.d("Data Ser", "data : ${recommendation.projectName}")
+        }
     }
 
     override fun getItemCount(): Int = recommen.size

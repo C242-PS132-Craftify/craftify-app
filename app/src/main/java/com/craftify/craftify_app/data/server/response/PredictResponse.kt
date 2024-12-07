@@ -1,4 +1,4 @@
-package com.craftify.craftify_app.data.server.api
+package com.craftify.craftify_app.data.server.response
 
 import kotlinx.parcelize.Parcelize
 import android.os.Parcelable
@@ -40,12 +40,7 @@ data class RecommendationsItem(
 	@field:SerializedName("project_img")
 	val projectImg: String? = null,
 
-	@field:SerializedName("project_materials")
-	val projectMaterials: String? = null,
-
 	@field:SerializedName("project_name")
 	val projectName: String? = null,
 
-	@field:SerializedName("project_recipe")
-	val projectRecipe: String? = null
 ) : Parcelable
