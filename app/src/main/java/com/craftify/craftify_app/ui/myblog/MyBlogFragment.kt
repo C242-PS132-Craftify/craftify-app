@@ -1,6 +1,7 @@
-package com.craftify.craftify_app.ui.blog
+package com.craftify.craftify_app.ui.myblog
 
 import CreatedAt
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -9,49 +10,57 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.craftify.craftify_app.R
 import com.craftify.craftify_app.data.Result
 import com.craftify.craftify_app.data.model.Blog
-import com.craftify.craftify_app.databinding.FragmentBlogBinding
+import com.craftify.craftify_app.databinding.FragmentMyBlogBinding
+import com.craftify.craftify_app.ui.blog.BlogDetailsActivity
 import com.craftify.craftify_app.utils.ViewModelFactory
 
-class BlogFragment : Fragment() {
+class MyBlogFragment : Fragment() {
 
-    private var _binding : FragmentBlogBinding? = null
+    private var _binding : FragmentMyBlogBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var adapter: BlogAdapter
-
-    private val viewModel : BlogViewModel by viewModels { ViewModelFactory(requireContext()) }
+    private lateinit var adapter: MyBlogAdapter
+    private val viewModel : MyBlogViewModel by viewModels { ViewModelFactory(requireContext()) }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentBlogBinding.inflate(inflater, container, false)
+        _binding = FragmentMyBlogBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        adapter = BlogAdapter(requireContext())
+        adapter = MyBlogAdapter(requireContext(), onEdit = { blog ->
+            val intent = Intent(requireContext(), BlogDetailsActivity::class.java)
+            intent.putExtra("BLOG_ID", blog.id)
+            startActivity(intent)
+        }, onDelete = { blog ->
+            showDeleteConfirmationDialog(blog)
+        })
+
         binding.rvBlogs.layoutManager = LinearLayoutManager(requireContext())
         binding.rvBlogs.adapter = adapter
 
         observeBlogs()
         setupListeners()
 
-        viewModel.fetchAllBlogs()
+        viewModel.fetchMyBlogs()
+    }
+
+    private fun showDeleteConfirmationDialog(blog: Blog) {
+
     }
 
     private fun setupListeners() {
-        binding.fabAdd.setOnClickListener{
-            //navigate ke add
-        }
         binding.swipeRefreshLayout.setOnRefreshListener {
-            viewModel.fetchAllBlogs()
+            viewModel.fetchMyBlogs()
         }
     }
 
@@ -91,10 +100,5 @@ class BlogFragment : Fragment() {
             val dateFormat = java.text.SimpleDateFormat("yyyy-MM-dd", java.util.Locale.getDefault())
             dateFormat.format(date)
         } ?: "Unknown date"
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 }

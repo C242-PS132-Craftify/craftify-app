@@ -25,6 +25,11 @@ interface CCAPIService {
         @Path("id") id: String
     ): Call<GetAllBlogResponseItem>
 
+    @GET("blog/user/{user_id}")
+    fun getUserBlogs(
+        @Path("user_id") userId : String
+    ) : Call<GetAllBlogResponse>
+
     @Multipart
     @POST("upload/blog-image")
     fun uploadBlogImage(

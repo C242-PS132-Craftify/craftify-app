@@ -2,7 +2,6 @@ package com.craftify.craftify_app.ui.login
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -22,12 +21,6 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = FragmentLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        loginViewModel.currentUser.observe(this){ user ->
-            if (user != null) {
-                navigateToHome()
-            }
-        }
 
         loginViewModel.loginResult.observe(this) { result ->
             when (result) {

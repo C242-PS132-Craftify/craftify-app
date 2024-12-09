@@ -45,6 +45,23 @@ class BlogRepository (private val apiService : CCAPIService) {
         }
     }
 
+    suspend fun getUserBlogs(userId : String?) : Result<GetAllBlogResponse> {
+        return withContext(Dispatchers.IO) {
+            try {
+                val response = apiService.getUserBlogs(userId!!).execute()
+                if (response.isSuccessful) {
+                    response.body()?.let {
+                        Result.Success(it)
+                    } ?: Result.Error("Empty response")
+                } else {
+                    Result.Error("Error: ${response.code()} - ${response.message()}")
+                }
+            } catch (e: Exception) {
+                Result.Error(e.message ?: "Unknown error")
+            }
+        }
+    }
+
     suspend fun uploadBlogImage(image: MultipartBody.Part): Result<UploadHeaderImageResponse> {
         return withContext(Dispatchers.IO) {
             try {

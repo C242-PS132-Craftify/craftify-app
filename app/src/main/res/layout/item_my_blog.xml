@@ -3,9 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:cardCornerRadius="8dp"
-    android:elevation="4dp"
-    android:layout_marginVertical="8dp">
+    android:layout_margin="8dp"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="6dp"
+    app:cardBackgroundColor="@color/white">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -14,7 +15,8 @@
 
         <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="270dp">
+            android:layout_height="200dp"
+            android:background="@color/gray_light">
 
             <ImageView
                 android:id="@+id/ivHeaderImage"
@@ -28,7 +30,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/lightgreen"
-            android:padding="8dp">
+            android:padding="12dp">
 
             <TextView
                 android:id="@+id/tvTitle"
@@ -40,15 +42,27 @@
                 android:textColor="@color/white"
                 android:text="@string/title" />
 
+            <ImageButton
+                android:id="@+id/btnMenu"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="9dp"
+                android:backgroundTint="@color/green"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="@string/options_menu"
+                android:src="@drawable/ic_more_vert" />
+
             <TextView
                 android:id="@+id/tvAuthor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/author"
-                android:textSize="16sp"
+                android:textSize="14sp"
                 android:layout_below="@id/tvTitle"
-                android:textStyle="bold"
-                android:fontFamily="@font/poppinssemibold"
+                android:layout_marginTop="4dp"
+                android:fontFamily="@font/poppinsregular"
                 android:textColor="@color/darkgreen" />
         </RelativeLayout>
     </LinearLayout>
