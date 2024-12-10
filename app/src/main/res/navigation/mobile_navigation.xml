@@ -13,6 +13,18 @@
             <action
                 android:id="@+id/action_to_fragmentCraftDetail"
                 app:destination="@id/fragment_craft_detail" />
+
+            <action
+                android:id="@+id/action_to_fragmentScan"
+                app:destination="@id/navigation_scan" />
+
+            <action
+                android:id="@+id/action_to_fragmentTutorial"
+                app:destination="@id/fragment_tutorial" />
+
+            <action
+                android:id="@+id/action_to_fragmentBlog"
+                app:destination="@id/navigation_blog" />
     </fragment>
 
     <fragment
@@ -40,6 +52,9 @@
         android:name="com.craftify.craftify_app.ui.profile.ProfileFragment"
         android:label="@string/profile"
         tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_navigation_profile_to_savedFragment"
+            app:destination="@id/fragment_saved_craft" />
         <action
             android:id="@+id/action_navigation_profile_to_myBlogFragment"
             app:destination="@id/myBlogFragment" />
@@ -70,6 +85,35 @@
         tools:layout="@layout/fragment_detail_craft"/>
 
     <fragment
+        android:id="@+id/blogDetailsFragment"
+        android:name="com.craftify.craftify_app.ui.blog.BlogDetailsFragment"
+        android:label="@string/blog_details"
+        tools:layout="@layout/fragment_blog_details" >
+        <argument
+            android:name="blogId"
+            app:argType="string"
+            />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_tutorial"
+        android:name="com.craftify.craftify_app.ui.tutorial.TutorialFragment"
+        android:label="Tutorial"
+        tools:layout="@layout/fragment_tutorial" >
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/fragment_saved_craft"
+        android:name="com.craftify.craftify_app.ui.savedCraft.SavedCraftFragment"
+        android:label="SavedCraft"
+        tools:layout="@layout/fragment_saved_craft" >
+
+        <action
+            android:id="@+id/action_savedcraft_to_detail_craft"
+            app:destination="@+id/fragment_craft_detail"
+            />
+    </fragment>
         android:id="@+id/myBlogFragment"
         android:name="com.craftify.craftify_app.ui.myblog.MyBlogFragment"
         android:label="MyBlogFragment" />

@@ -9,17 +9,17 @@ import kotlinx.coroutines.flow.map
 
 class SettingPreferences private constructor(private val dataStore: DataStore<Preferences>) {
 
-    private val LOGIN_KEY = booleanPreferencesKey("login_info")
+    private val ONBOARDING_KEY = booleanPreferencesKey("onboarding_info")
 
-    fun getLoginInfo(): Flow<Boolean> {
+    fun getOnboardingInfo(): Flow<Boolean> {
         return dataStore.data.map { preferences ->
-            preferences[LOGIN_KEY] ?: false
+            preferences[ONBOARDING_KEY] ?: false
         }
     }
 
-    suspend fun saveLoginInfo(isLogin: Boolean) {
+    suspend fun saveOnboardingInfo(isLogin: Boolean) {
         dataStore.edit { preferences ->
-            preferences[LOGIN_KEY] = isLogin
+            preferences[ONBOARDING_KEY] = isLogin
         }
     }
 

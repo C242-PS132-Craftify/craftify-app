@@ -38,6 +38,10 @@ class ProfileFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setupListeners()
         observeViewModel()
+
+        binding.btnSave.setOnClickListener {
+            findNavController().navigate(R.id.action_navigation_profile_to_savedFragment)
+        }
     }
 
     private fun observeViewModel() {

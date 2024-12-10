@@ -4,7 +4,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/base_light"
     android:orientation="vertical"
     tools:context=".ui.login.LoginActivity">
 
@@ -17,7 +16,7 @@
         android:layout_marginTop="40dp"
         android:textSize="40sp"
         android:fontFamily="@font/poppinsextrabold"
-        android:text="CRAFTIFY"
+        android:text="@string/craftify"
         android:textStyle="bold"
 
         />
@@ -33,7 +32,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Username"
+        android:text="@string/username"
         android:textColor="@color/black"
         android:layout_marginTop="22dp"
         android:layout_marginStart="32dp"
@@ -50,7 +49,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
-        android:hint="youremail.gmail.com"
+        android:hint="@string/example_email"
         android:fontFamily="@font/poppinsregular"
         app:boxStrokeColor="@color/black"
         app:boxStrokeWidth="2dp"
@@ -70,7 +69,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="password"
+        android:text="@string/password"
         android:textColor="@color/black"
         android:layout_marginStart="32dp"
         android:layout_marginTop="10dp"
@@ -87,7 +86,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
-        android:hint="yout passwod"
+        android:hint="@string/password_example"
         android:fontFamily="@font/poppinsregular"
         app:boxStrokeColor="@color/black"
         app:boxStrokeWidth="2dp"
@@ -95,13 +94,16 @@
         app:boxCornerRadiusTopEnd="16dp"
         app:boxCornerRadiusBottomStart="16dp"
         app:boxCornerRadiusBottomEnd="16dp"
+        app:endIconMode="password_toggle"
         >
 
         <!--this is the actual edit text which takes the input-->
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/password_input"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -113,7 +115,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
         android:layout_marginTop="32dp"
-        android:text="Login"
+        android:text="@string/login"
         android:fontFamily="@font/poppinsbold"
         android:background="@drawable/button_primary"
 
@@ -124,7 +126,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/poppinsregular"
-        android:text="Sign Up"
+        android:text="@string/sign_up"
         android:gravity="center"
         android:textColor="@color/blue"
         android:layout_marginTop="10dp"

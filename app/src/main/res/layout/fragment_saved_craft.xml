@@ -23,57 +23,19 @@
             android:backgroundTint="@null"
             android:layout_marginBottom="12dp"
             android:paddingVertical="0dp"
-            android:layout_marginHorizontal="22dp"
+            android:layout_marginHorizontal="32dp"
             />
-
-        <!-- Analyze Section -->
-        <androidx.cardview.widget.CardView
-            android:id="@+id/card_analyze"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:cardCornerRadius="16dp"
-            android:layout_marginBottom="16dp"
-            android:layout_marginHorizontal="22dp"
-            >
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="10dp"
-                android:background="@color/lightgreen">
-
-                <TextView
-                    android:id="@+id/tv_analyze"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Analyze :"
-                    android:fontFamily="@font/poppinsbold"
-                    android:textColor="@color/white"
-                    android:layout_marginBottom="10dp"
-                    android:textSize="16sp"
-                    />
-
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recyclerViewDetections"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:nestedScrollingEnabled="false"
-                    android:layout_marginTop="8dp" />
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
 
         <!-- Related Craft Section -->
         <TextView
             android:id="@+id/tv_relatedCraft"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Related Craft"
+            android:text="Saved Craft"
             android:layout_marginBottom="8dp"
             android:fontFamily="@font/poppinsextrabold"
             android:textSize="18sp"
-            android:layout_marginHorizontal="22dp"
+            android:layout_marginHorizontal="32dp"
             />
 
         <androidx.recyclerview.widget.RecyclerView
@@ -81,7 +43,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:nestedScrollingEnabled="false"
-            android:layout_marginHorizontal="22dp"
+            android:layout_marginHorizontal="32dp"
             android:layout_marginBottom="60dp"
             />
     </LinearLayout>
