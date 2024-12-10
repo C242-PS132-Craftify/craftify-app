@@ -6,8 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -63,6 +65,22 @@ class HomeFragment : Fragment(), OnItemClickListener {
 
         if (model.craftList.value.isNullOrEmpty()) {
             getCraft()
+        }
+
+        //val navController = requireActivity().findNavController(R.id.mobile_navigation)
+        val cardScan = binding.card2
+        cardScan.setOnClickListener{
+            findNavController().navigate(R.id.action_to_fragmentScan)
+        }
+
+        val btnTutorial = binding.btnHow
+        btnTutorial.setOnClickListener {
+            findNavController().navigate(R.id.action_to_fragmentTutorial)
+        }
+
+        val btnBlog = binding.btnBlog
+        btnBlog.setOnClickListener {
+            findNavController().navigate(R.id.action_to_fragmentBlog)
         }
 
     }

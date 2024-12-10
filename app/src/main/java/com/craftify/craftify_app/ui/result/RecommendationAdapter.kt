@@ -11,13 +11,17 @@ import com.bumptech.glide.Glide
 import com.craftify.craftify_app.R
 import com.craftify.craftify_app.data.server.response.RecommendationsItem
 
-class RecommendationAdapter(private val recommen: List<RecommendationsItem>, private val listener: OnItemClickListener) :
-
+class RecommendationAdapter(
+    private val recommen: List<RecommendationsItem>,
+    private val listener: OnItemClickListener,
+    private val craftListener : OnCraftSaveListener
+) :
     RecyclerView.Adapter<RecommendationAdapter.RecommendationViewHolder>() {
 
     class RecommendationViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val image: ImageView = view.findViewById(R.id.img_card)
         val title: TextView = view.findViewById(R.id.title_card)
+        val bookmark : ImageView = view.findViewById(R.id.fav_icon)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecommendationViewHolder {
@@ -37,6 +41,10 @@ class RecommendationAdapter(private val recommen: List<RecommendationsItem>, pri
         holder.itemView.setOnClickListener {
             listener.onItemClick(recommendation.projectName)
             Log.d("Data Ser", "data : ${recommendation.projectName}")
+        }
+
+        holder.bookmark.setOnClickListener {
+            craftListener.onCraftSave(recommendation.projectName, recommendation.projectImg)
         }
     }
 

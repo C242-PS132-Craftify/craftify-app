@@ -30,5 +30,12 @@
     <string name="user">user</string>
     <string name="lorem_ipsum_dolor_sit_amet">Lorem ipsum dolor sit amet...</string>
     <string name="date_format">YYYY/MM/DD</string>
+    <string name="materials">Materials :</string>
+    <string name="steps">Steps :</string>
+    <string name="back">Back</string>
+    <string name="example_email">youremail.gmail.com</string>
+    <string name="password_example">your passwod</string>
+    <string name="login">Login</string>
+    <string name="sign_up">Sign Up</string>
 
 </resources>

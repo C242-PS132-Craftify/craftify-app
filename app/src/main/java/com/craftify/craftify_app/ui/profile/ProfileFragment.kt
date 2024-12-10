@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.craftify.craftify_app.R
 import com.craftify.craftify_app.databinding.FragmentProfileBinding
 import com.craftify.craftify_app.ui.login.LoginActivity
@@ -36,6 +37,10 @@ class ProfileFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setupListeners()
         observeViewModel()
+
+        binding.btnSave.setOnClickListener {
+            findNavController().navigate(R.id.action_navigation_profile_to_savedFragment)
+        }
     }
 
     private fun observeViewModel() {

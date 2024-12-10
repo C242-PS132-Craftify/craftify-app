@@ -3,6 +3,7 @@ agp = "8.6.1"
 cameraCore = "1.5.1"
 cameraLifecycle = "1.5.1"
 cameraView = "1.5.1"
+compilerVersion = "1.1.1"
 coreKtxVersion = "1.14.0"
 datastorePreferences = "1.0.0"
 kotlin = "1.9.0"
@@ -24,6 +25,9 @@ activity = "1.8.0"
 googleGmsGoogleServices = "4.4.2"
 firebaseAuth = "23.1.0"
 firebaseFirestore = "25.1.1"
+roomCompiler = "2.5.2"
+roomKtx = "2.5.2"
+roomRuntime = "2.5.2"
 swiperefreshlayout = "1.1.0"
 
 
@@ -36,6 +40,9 @@ androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = 
 androidx-core-ktx-v1140 = { module = "androidx.core:core-ktx", version.ref = "coreKtxVersion" }
 androidx-datastore-preferences = { module = "androidx.datastore:datastore-preferences", version.ref = "datastorePreferences" }
 androidx-lifecycle-viewmodel-ktx-v261 = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycleViewmodelKtxVersion" }
+androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "roomCompiler" }
+androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "roomKtx" }
+androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "roomRuntime" }
 camera-core = { module = "androidx.camera:camera-core", version.ref = "cameraCore" }
 camera-lifecycle = { module = "androidx.camera:camera-lifecycle", version.ref = "cameraLifecycle" }
 camera-view = { module = "androidx.camera:camera-view", version.ref = "cameraView" }
@@ -58,6 +65,7 @@ firebase-auth = { group = "com.google.firebase", name = "firebase-auth", version
 retrofit = { module = "com.squareup.retrofit2:retrofit" }
 firebase-firestore = { group = "com.google.firebase", name = "firebase-firestore", version.ref = "firebaseFirestore" }
 androidx-swiperefreshlayout = { group = "androidx.swiperefreshlayout", name = "swiperefreshlayout", version.ref = "swiperefreshlayout" }
+room-compiler = { module = "android.arch.persistence.room:compiler", version.ref = "compilerVersion" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

@@ -188,12 +188,22 @@
             android:background="@drawable/button_secondary"
             app:backgroundTint="@null"
             android:fontFamily="@font/poppinsbold"
-            android:text="Upload Your Craation"
+            android:text="Upload Your Creations"
             android:paddingVertical="15dp"
             android:textSize="18sp"
             app:layout_constraintTop_toBottomOf="@+id/btn_how"
             tools:layout_editor_absoluteX="16dp"
-            android:layout_marginBottom="70dp"
+            android:layout_marginBottom="40dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_blog"
+            android:layout_marginTop="70dp"
+            android:text="@string/craftify"
             />
 
 

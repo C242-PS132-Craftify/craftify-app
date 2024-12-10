@@ -12,7 +12,7 @@
         android:background="@drawable/button_clear_less_rounded"
         >
         <ImageView
-            android:id="@+id/img_card"
+            android:id="@+id/img_card_craft"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="10dp"
@@ -23,22 +23,21 @@
             />
 
         <TextView
-            android:id="@+id/title_card"
+            android:id="@+id/title_card_craft"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/img_card"
+            app:layout_constraintTop_toBottomOf="@+id/img_card_craft"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/fav_icon"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="30dp"
             android:layout_marginStart="10dp"
-            android:layout_marginEnd="50dp"
+            android:layout_marginEnd="30dp"
             android:textSize="18sp"
             android:fontFamily="@font/poppinsbold"
             />
 
         <ImageView
-            android:id="@+id/fav_icon"
+            android:id="@+id/fav_icon_craft"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:contentDescription="Save"
