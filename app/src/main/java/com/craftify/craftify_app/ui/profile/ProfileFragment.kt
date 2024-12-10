@@ -2,13 +2,18 @@ package com.craftify.craftify_app.ui.profile
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
 import com.craftify.craftify_app.R
+import com.craftify.craftify_app.data.Result
+import com.craftify.craftify_app.data.model.Blog
 import com.craftify.craftify_app.databinding.FragmentProfileBinding
 import com.craftify.craftify_app.ui.about.AboutActivity
 import com.craftify.craftify_app.ui.login.LoginActivity
@@ -21,11 +26,6 @@ class ProfileFragment : Fragment() {
 
     private val viewModel : ProfileViewModel by viewModels { ViewModelFactory(requireContext()) }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -36,6 +36,7 @@ class ProfileFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel.getUser()
         setupListeners()
         observeViewModel()
 
@@ -45,9 +46,26 @@ class ProfileFragment : Fragment() {
     }
 
     private fun observeViewModel() {
-        viewModel.currentUser.observe(viewLifecycleOwner) { user ->
-            binding.tvUsername.text = user?.username
-            binding.tvEmail.text = user?.email
+        viewModel.currentUser.observe(viewLifecycleOwner) { result ->
+            when (result) {
+                is Result.Loading -> {
+                    binding.swipeRefreshLayout.isRefreshing = true
+                }
+                is Result.Success -> {
+                    binding.swipeRefreshLayout.isRefreshing = false
+                    binding.tvEmail.text = result.data.email
+                    binding.tvUsername.text = result.data.username
+                    Glide.with(binding.imgProfile.context)
+                        .load(result.data.profile_picture)
+                        .placeholder(R.drawable.login_image)
+                        .into(binding.imgProfile)
+                }
+                is Result.Error -> {
+                    binding.swipeRefreshLayout.isRefreshing = false
+                    Toast.makeText(requireContext(), result.error, Toast.LENGTH_SHORT).show()
+                    Log.d("Error", result.error)
+                }
+            }
         }
     }
 
@@ -66,6 +84,10 @@ class ProfileFragment : Fragment() {
         }
         binding.btnAboutus.setOnClickListener {
             val intent = Intent(requireContext(), AboutActivity::class.java)
+            startActivity(intent)
+        }
+        binding.cardProfile.setOnClickListener{
+            val intent = Intent(requireContext(), AccountInformationActivity::class.java)
             startActivity(intent)
         }
     }

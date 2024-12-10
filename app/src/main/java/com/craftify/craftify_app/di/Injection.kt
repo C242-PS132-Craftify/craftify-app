@@ -25,7 +25,8 @@ object Injection {
 
     fun provideUserRepository(context: Context) : UserRepository {
         val firestore = FirebaseFirestore.getInstance()
-        return  UserRepository(firestore)
+        val apiService = CCApiConfig.retrofit.create(CCAPIService::class.java)
+        return  UserRepository(firestore, apiService)
     }
 
     fun provideBlogRepository(context: Context) : BlogRepository {

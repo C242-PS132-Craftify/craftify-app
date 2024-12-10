@@ -15,6 +15,9 @@ import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Build
 import android.util.Log
+import android.view.View
+import android.window.OnBackInvokedDispatcher
+import androidx.activity.OnBackPressedCallback
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.viewModels
@@ -62,6 +65,12 @@ class AddEditBlogActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityAddEditBlogBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                showBackConfirmationDialog()
+            }
+        })
 
         loadingDialog = CustomLoadingDialog(this)
 
@@ -115,7 +124,7 @@ class AddEditBlogActivity : AppCompatActivity() {
         }
 
         binding.topAppBar.setNavigationOnClickListener {
-            onBackPressedDispatcher.onBackPressed()
+            showBackConfirmationDialog()
         }
 
         blogViewModel.uploadImage.observe(this) { result ->
@@ -223,8 +232,18 @@ class AddEditBlogActivity : AppCompatActivity() {
         blogViewModel.currentUserId.observe(this){userId->
             uId = userId
         }
-        blogViewModel.currentUser.observe(this){user->
-            author = user?.username
+        blogViewModel.currentUser.observe(this){result->
+            when (result) {
+                is Result.Loading -> {
+                }
+                is Result.Success -> {
+                    author = result.data.username
+                }
+                is Result.Error -> {
+                    Toast.makeText(this, result.error, Toast.LENGTH_SHORT).show()
+                    Log.d("Error", result.error)
+                }
+            }
         }
 
         Log.d("AddBlog", "Title: $title, Author: $author, UserId: $uId, Content: $content, HeaderImage: $imageUrl")
@@ -253,6 +272,17 @@ class AddEditBlogActivity : AppCompatActivity() {
                 Toast.makeText(this, result.error, Toast.LENGTH_SHORT).show()
             }
         }
+    }
+
+    private fun showBackConfirmationDialog() {
+        AlertDialog.Builder(this)
+            .setTitle("Discard Changes?")
+            .setMessage("Are you sure you want to leave? Any unsaved changes will be lost.")
+            .setPositiveButton("Leave") { _, _ ->
+                finish()
+            }
+            .setNegativeButton("Cancel", null)
+            .show()
     }
 }
 

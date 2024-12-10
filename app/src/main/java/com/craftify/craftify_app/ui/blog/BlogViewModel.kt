@@ -32,8 +32,8 @@ class BlogViewModel(private val repository: BlogRepository, private val authRepo
     private val _uploadImage = MutableLiveData<Result<UploadHeaderImageResponse>>()
     val uploadImage: LiveData<Result<UploadHeaderImageResponse>> get() = _uploadImage
 
-    private val _currentUser = MutableLiveData<User>()
-    val currentUser: LiveData<User?> = _currentUser
+    private val _currentUser = MutableLiveData<Result<User>>()
+    val currentUser: LiveData<Result<User>> = _currentUser
 
     private val _currentUserId = MutableLiveData<String>()
     val currentUserId : LiveData<String?> = _currentUserId
