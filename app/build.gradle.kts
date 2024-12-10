@@ -100,4 +100,13 @@ dependencies {
 
 
     implementation ("com.google.guava:guava:31.1-android")
+
+    //cardview
+    implementation("androidx.cardview:cardview:1.0.0")
+
+    //splash screen
+    implementation("androidx.core:core-splashscreen:1.0.0")
+
+    //animation
+    implementation ("com.airbnb.android:lottie:6.1.0")
 }

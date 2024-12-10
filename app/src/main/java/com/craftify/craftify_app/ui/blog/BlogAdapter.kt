@@ -1,5 +1,8 @@
 package com.craftify.craftify_app.ui.blog
 
+import android.content.Context
+import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -10,7 +13,7 @@ import com.craftify.craftify_app.R
 import com.craftify.craftify_app.data.model.Blog
 import com.craftify.craftify_app.databinding.ItemBlogBinding
 
-class BlogAdapter (private val onBlogClick : (String) -> Unit) : ListAdapter<Blog, BlogAdapter.BlogViewHolder>(DIFF_CALLBACK) {
+class BlogAdapter (private var context : Context) : ListAdapter<Blog, BlogAdapter.BlogViewHolder>(DIFF_CALLBACK) {
 
     companion object {
         private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<Blog>() {
@@ -28,15 +31,18 @@ class BlogAdapter (private val onBlogClick : (String) -> Unit) : ListAdapter<Blo
         fun bind(item: Blog) {
             binding.tvTitle.text = item.title
             binding.tvAuthor.text = item.author
-            binding.tvContentPreview.text = item.content
+            //binding.tvDate.text = item.createdAt
             Glide.with(binding.ivHeaderImage.context)
                 .load(item.headerImage)
-                .placeholder(R.drawable.ic_placeholder_image)
+                .placeholder(R.drawable.ic_logo)
                 .into(binding.ivHeaderImage)
 
             itemView.setOnClickListener {
                 item.id.let { id ->
-                    onBlogClick(id)
+                    val intent = Intent(context, BlogDetailsActivity::class.java).apply {
+                        putExtra("BLOG_ID", id)
+                    }
+                    context.startActivity(intent)
                 }
             }
         }

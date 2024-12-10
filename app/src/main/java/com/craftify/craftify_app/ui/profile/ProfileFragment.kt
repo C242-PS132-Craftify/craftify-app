@@ -10,6 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.craftify.craftify_app.R
 import com.craftify.craftify_app.databinding.FragmentProfileBinding
+import com.craftify.craftify_app.ui.about.AboutActivity
 import com.craftify.craftify_app.ui.login.LoginActivity
 import com.craftify.craftify_app.utils.ViewModelFactory
 
@@ -56,6 +57,16 @@ class ProfileFragment : Fragment() {
             val intent = Intent(requireContext(), LoginActivity::class.java)
             startActivity(intent)
             requireActivity().finish()
+        }
+        binding.btnBlog.setOnClickListener {
+            findNavController().navigate(R.id.action_navigation_profile_to_myBlogFragment)
+        }
+        binding.btnNightmode.setOnClickListener {
+            findNavController().navigate(R.id.action_navigation_profile_to_settingsFragment)
+        }
+        binding.btnAboutus.setOnClickListener {
+            val intent = Intent(requireContext(), AboutActivity::class.java)
+            startActivity(intent)
         }
     }
 

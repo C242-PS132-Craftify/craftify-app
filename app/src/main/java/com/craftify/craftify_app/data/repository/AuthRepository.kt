@@ -39,15 +39,14 @@ class AuthRepository (private val auth : FirebaseAuth, private val db : Firebase
     }
 
     fun getCurrentUser(): FirebaseUser? {
-        return auth.currentUser
+        if (auth.currentUser != null){
+            return auth.currentUser
+        }
+        return null
     }
 
     fun logout() {
         auth.signOut()
-    }
-
-    fun isUserLoggedIn(): Boolean {
-        return auth.currentUser != null
     }
 
     companion object {
