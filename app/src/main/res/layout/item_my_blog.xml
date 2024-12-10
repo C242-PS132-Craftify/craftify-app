@@ -24,6 +24,18 @@
                 android:layout_height="match_parent"
                 android:contentDescription="@string/blog_image_description"
                 android:scaleType="centerCrop" />
+
+            <ImageButton
+                android:id="@+id/btnMenu"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="9dp"
+                android:backgroundTint="@color/green"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="@string/options_menu"
+                android:layout_gravity="end"
+                android:src="@drawable/ic_more_vert" />
         </FrameLayout>
 
         <RelativeLayout
@@ -41,18 +53,6 @@
                 android:fontFamily="@font/poppinssemibold"
                 android:textColor="@color/white"
                 android:text="@string/title" />
-
-            <ImageButton
-                android:id="@+id/btnMenu"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_alignParentEnd="true"
-                android:layout_marginTop="4dp"
-                android:layout_marginEnd="9dp"
-                android:backgroundTint="@color/green"
-                android:background="?attr/selectableItemBackgroundBorderless"
-                android:contentDescription="@string/options_menu"
-                android:src="@drawable/ic_more_vert" />
 
             <TextView
                 android:id="@+id/tvAuthor"

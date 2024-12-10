@@ -9,6 +9,7 @@ import com.craftify.craftify_app.ui.login.LoginViewModel
 import com.craftify.craftify_app.ui.myblog.MyBlogViewModel
 import com.craftify.craftify_app.ui.profile.ProfileViewModel
 import com.craftify.craftify_app.ui.register.RegisterViewModel
+import com.craftify.craftify_app.ui.settings.SettingsViewModel
 
 class ViewModelFactory(
     private val context : Context,
@@ -26,10 +27,13 @@ class ViewModelFactory(
                 ProfileViewModel(Injection.provideAuthRepository(context), Injection.provideUserRepository(context)) as T
             }
             modelClass.isAssignableFrom(BlogViewModel::class.java) -> {
-                BlogViewModel(Injection.provideBlogRepository(context)) as T
+                BlogViewModel(Injection.provideBlogRepository(context), Injection.provideAuthRepository(context), Injection.provideUserRepository(context)) as T
             }
             modelClass.isAssignableFrom(MyBlogViewModel::class.java) -> {
                 MyBlogViewModel(Injection.provideBlogRepository(context), Injection.provideAuthRepository(context)) as T
+            }
+            modelClass.isAssignableFrom(SettingsViewModel::class.java) -> {
+                SettingsViewModel(Injection.provideSettingsPreferences(context)) as T
             }
             else -> throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
         }

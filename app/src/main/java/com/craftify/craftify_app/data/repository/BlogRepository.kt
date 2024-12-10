@@ -2,10 +2,12 @@ package com.craftify.craftify_app.data.repository
 
 import GetAllBlogResponse
 import GetAllBlogResponseItem
+import android.util.Log
 import com.craftify.craftify_app.data.server.api.cc.CCAPIService
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import com.craftify.craftify_app.data.Result
+import com.craftify.craftify_app.data.model.BlogRequest
 import com.craftify.craftify_app.data.server.api.cc.response.DeleteBlogResponse
 import com.craftify.craftify_app.data.server.api.cc.response.UploadHeaderImageResponse
 import okhttp3.MultipartBody
@@ -82,12 +84,20 @@ class BlogRepository (private val apiService : CCAPIService) {
     suspend fun addBlog(
         title: String,
         author: String,
+        userId: String,
         content: String,
         headerImage: String
     ): Result<GetAllBlogResponseItem> {
+        val blogRequest = BlogRequest(
+            title = title,
+            author = author,
+            user_id = userId,
+            content = content,
+            header_image = headerImage
+        )
         return withContext(Dispatchers.IO) {
             try {
-                val response = apiService.addBlog(title, author, content, headerImage).execute()
+                val response = apiService.addBlog(blogRequest).execute()
                 if (response.isSuccessful) {
                     response.body()?.let {
                         Result.Success(it)
@@ -105,12 +115,20 @@ class BlogRepository (private val apiService : CCAPIService) {
         id: String,
         title: String,
         author: String,
+        userId: String,
         content: String,
         headerImage: String
     ): Result<GetAllBlogResponseItem> {
+        val blogRequest = BlogRequest(
+            title = title,
+            author = author,
+            user_id = userId,
+            content = content,
+            header_image = headerImage
+        )
         return withContext(Dispatchers.IO) {
             try {
-                val response = apiService.editBlog(id, title, author, content, headerImage).execute()
+                val response = apiService.editBlog(id, blogRequest).execute()
                 if (response.isSuccessful) {
                     response.body()?.let {
                         Result.Success(it)

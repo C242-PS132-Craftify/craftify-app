@@ -39,7 +39,14 @@
         android:id="@+id/navigation_profile"
         android:name="com.craftify.craftify_app.ui.profile.ProfileFragment"
         android:label="@string/profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_navigation_profile_to_myBlogFragment"
+            app:destination="@id/myBlogFragment" />
+        <action
+            android:id="@+id/action_navigation_profile_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/fragment_result"
@@ -61,4 +68,14 @@
         android:name="com.craftify.craftify_app.ui.craft.DetailCraftFragment"
         android:label="Detail"
         tools:layout="@layout/fragment_detail_craft"/>
+
+    <fragment
+        android:id="@+id/myBlogFragment"
+        android:name="com.craftify.craftify_app.ui.myblog.MyBlogFragment"
+        android:label="MyBlogFragment" />
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.craftify.craftify_app.ui.settings.SettingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" />
 </navigation>

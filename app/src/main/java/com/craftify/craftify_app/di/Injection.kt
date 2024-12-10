@@ -1,6 +1,8 @@
 package com.craftify.craftify_app.di
 
 import android.content.Context
+import com.craftify.craftify_app.data.local.preferences.SettingsPreferences
+import com.craftify.craftify_app.data.local.preferences.dataStore
 import com.craftify.craftify_app.data.repository.AuthRepository
 import com.craftify.craftify_app.data.repository.BlogRepository
 import com.craftify.craftify_app.data.repository.UserRepository
@@ -24,5 +26,9 @@ object Injection {
     fun provideBlogRepository(context: Context) : BlogRepository {
         val apiService = CCApiConfig.retrofit.create(CCAPIService::class.java)
         return BlogRepository(apiService)
+    }
+
+    fun provideSettingsPreferences(context: Context) : SettingsPreferences {
+        return SettingsPreferences.getInstance(context.dataStore)
     }
 }

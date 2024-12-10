@@ -1,6 +1,7 @@
 package com.craftify.craftify_app.ui.blog
 
 import CreatedAt
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -48,7 +49,8 @@ class BlogFragment : Fragment() {
 
     private fun setupListeners() {
         binding.fabAdd.setOnClickListener{
-            //navigate ke add
+            val intent = Intent(requireContext(), AddEditBlogActivity::class.java)
+            startActivity(intent)
         }
         binding.swipeRefreshLayout.setOnRefreshListener {
             viewModel.fetchAllBlogs()

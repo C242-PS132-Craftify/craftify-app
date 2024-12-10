@@ -1,5 +1,6 @@
 package com.craftify.craftify_app.ui.splash
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
@@ -12,6 +13,7 @@ import com.craftify.craftify_app.ui.login.LoginActivity
 import com.craftify.craftify_app.ui.login.LoginViewModel
 import com.craftify.craftify_app.utils.ViewModelFactory
 
+@SuppressLint("CustomSplashScreen")
 class SplashActivity : AppCompatActivity() {
     private lateinit var binding : ActivitySplashBinding
     private val viewModel : LoginViewModel by viewModels { ViewModelFactory(this) }
