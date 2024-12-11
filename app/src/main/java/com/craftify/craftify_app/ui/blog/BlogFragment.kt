@@ -93,6 +93,12 @@ class BlogFragment : Fragment() {
         } ?: "Unknown date"
     }
 
+    override fun onResume() {
+        super.onResume()
+        viewModel.fetchAllBlogs()
+        observeBlogs()
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

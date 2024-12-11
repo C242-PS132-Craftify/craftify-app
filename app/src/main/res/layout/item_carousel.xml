@@ -26,6 +26,8 @@
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            android:ellipsize="end"
+            android:lines="1"
             android:gravity="center"
             android:text="Item Title"
             android:textColor="#000"
