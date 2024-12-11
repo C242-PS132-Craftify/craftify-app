@@ -8,11 +8,13 @@ import androidx.room.Query
 import androidx.room.Update
 import com.craftify.craftify_app.data.local.entity.RecommendationEntity
 
-
 @Dao
 interface RecommendationDAO {
     @Query("SELECT * FROM saved_craft")
-    fun getSavedCraft(): LiveData<List<RecommendationEntity>>
+    fun getAll(): LiveData<List<RecommendationEntity>>
+
+    @Query("SELECT * FROM saved_craft where is_favorite=1")
+    fun getAllFavorites() : LiveData<List<RecommendationEntity>>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertCraft(craft: RecommendationEntity)
@@ -20,12 +22,18 @@ interface RecommendationDAO {
     @Update
     fun updateCraft(craft : RecommendationEntity)
 
-    @Query("DELETE FROM saved_craft")
-    fun deleteAll()
+    @Query("UPDATE saved_craft SET is_favorite = :isFavorite WHERE project_name = :projectName")
+    suspend fun updateFavoriteStatus(projectName:  String, isFavorite: Boolean)
 
-    @Query("DELETE FROM saved_craft WHERE title = :title")
-    fun deleteCraft(title : String)
+    @Query("delete from saved_craft where is_favorite = 0")
+    suspend fun deleteAll()
 
-    @Query("SELECT EXISTS(SELECT * FROM saved_craft WHERE title = :title)")
-    fun isCraftSaved(title: String): Boolean
+    @Query("SELECT EXISTS(SELECT * FROM saved_craft WHERE project_name = :name AND is_favorite = 1)")
+    suspend fun isEventFavorite(name : String):Boolean
+
+    @Query("SELECT is_favorite FROM  saved_craft WHERE id = :id")
+    suspend fun isSpecificEventFavorite(id: String): Boolean
+
+    @Query("SELECT * FROM saved_craft WHERE project_name = :projectName")
+    fun getByName(projectName: String): RecommendationEntity
 }

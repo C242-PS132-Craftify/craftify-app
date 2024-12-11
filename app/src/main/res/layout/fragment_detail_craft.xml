@@ -6,104 +6,107 @@
     android:layout_height="match_parent"
     tools:context=".ui.craft.DetailCraftFragment">
 
-   <LinearLayout
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:orientation="vertical"
-       >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-       <Button
-           android:id="@+id/btn_back"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:background="@drawable/button_clear_less_rounded"
-           android:drawableLeft="@drawable/baseline_arrow_back_ios_24"
-           android:text="@string/back"
-           android:textSize="12sp"
-           android:textColor="@color/black"
-           android:backgroundTint="@null"
-           android:layout_marginBottom="12dp"
-           android:paddingVertical="0dp"
-           android:layout_marginTop="10dp"
-           android:layout_marginHorizontal="32dp"
-           />
+        <Button
+            android:id="@+id/btn_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_clear_less_rounded"
+            android:drawableLeft="@drawable/baseline_arrow_back_ios_24"
+            android:text="@string/back"
+            android:textSize="12sp"
+            android:textColor="@color/black"
+            android:backgroundTint="@null"
+            android:layout_marginBottom="12dp"
+            android:paddingVertical="0dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginHorizontal="32dp" />
 
-       <ProgressBar
-           android:id="@+id/progressBar"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:layout_gravity="center"
-           android:visibility="gone"
-           android:layout_marginTop="150dp"
-           />
-       
-       <ImageView
-           android:id="@+id/iv_cover_img"
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content"
-           />
-       
-       <TextView
-           android:id="@+id/tv_title"
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content"
-           android:layout_marginHorizontal="32dp"
-           android:fontFamily="@font/poppinsextrabold"
-           android:textSize="25sp"
-           android:gravity="center"
-           android:textColor="@color/black"
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            android:layout_marginTop="150dp" />
 
-           android:layout_marginTop="10dp"
-           android:layout_marginBottom="10dp"
-           />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="360dp">
 
-       <TextView
-           android:id="@+id/tv_material"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:layout_marginHorizontal="32dp"
-           android:text="@string/materials"
-           android:fontFamily="@font/poppinssemibold"
-           android:textSize="18sp"
-           />
+            <ImageView
+                android:id="@+id/iv_cover_img"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
 
-       <TextView
-           android:id="@+id/tv_item_material"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:layout_marginHorizontal="32dp"
-           android:fontFamily="@font/poppinsregular"
-           android:textSize="16sp"
-           android:layout_marginBottom="10dp"
-           />
+            <ImageView
+                android:id="@+id/fab_favorite"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_margin="16dp"
+                android:contentDescription="@string/favorite"
+                android:src="@drawable/baseline_favorite_border_24"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
 
-       <TextView
-           android:id="@+id/tv_steps"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:layout_marginHorizontal="32dp"
-           android:text="@string/steps"
-           android:fontFamily="@font/poppinssemibold"
-           android:textSize="18sp"
-           />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-       <TextView
-           android:id="@+id/tv_item_steps"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:layout_marginHorizontal="32dp"
-           android:fontFamily="@font/poppinsregular"
-           android:textSize="16sp"
-           android:layout_marginBottom="60dp"
-           />
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="32dp"
+            android:fontFamily="@font/poppinsextrabold"
+            android:textSize="25sp"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp" />
 
+        <TextView
+            android:id="@+id/tv_material"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="32dp"
+            android:text="@string/materials"
+            android:fontFamily="@font/poppinssemibold"
+            android:textSize="18sp" />
 
+        <TextView
+            android:id="@+id/tv_item_material"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="32dp"
+            android:fontFamily="@font/poppinsregular"
+            android:textSize="16sp"
+            android:layout_marginBottom="10dp" />
 
+        <TextView
+            android:id="@+id/tv_steps"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="32dp"
+            android:text="@string/steps"
+            android:fontFamily="@font/poppinssemibold"
+            android:textSize="18sp" />
 
+        <TextView
+            android:id="@+id/tv_item_steps"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="32dp"
+            android:fontFamily="@font/poppinsregular"
+            android:textSize="16sp"
+            android:layout_marginBottom="60dp" />
 
-
-
-
-   </LinearLayout>
+    </LinearLayout>
 
 </ScrollView>

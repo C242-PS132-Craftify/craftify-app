@@ -85,10 +85,10 @@
         tools:layout="@layout/fragment_detail_craft"/>
 
     <fragment
-        android:id="@+id/blogDetailsFragment"
-        android:name="com.craftify.craftify_app.ui.blog.BlogDetailsFragment"
+        android:id="@+id/myBlogFragment"
+        android:name="com.craftify.craftify_app.ui.myblog.MyBlogFragment"
         android:label="@string/blog_details"
-        tools:layout="@layout/fragment_blog_details" >
+        tools:layout="@layout/fragment_my_blog" >
         <argument
             android:name="blogId"
             app:argType="string"
@@ -114,9 +114,6 @@
             app:destination="@+id/fragment_craft_detail"
             />
     </fragment>
-        android:id="@+id/myBlogFragment"
-        android:name="com.craftify.craftify_app.ui.myblog.MyBlogFragment"
-        android:label="MyBlogFragment" />
     <fragment
         android:id="@+id/settingsFragment"
         android:name="com.craftify.craftify_app.ui.settings.SettingsFragment"

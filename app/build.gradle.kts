@@ -45,6 +45,7 @@ android {
 
 dependencies {
     implementation(libs.androidx.swiperefreshlayout)
+    implementation(libs.androidx.room.common)
     val cameraxVersion = "1.3.0"
 
     implementation(libs.androidx.core.ktx)

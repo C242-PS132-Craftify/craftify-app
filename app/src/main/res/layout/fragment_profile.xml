@@ -104,21 +104,6 @@
             app:layout_constraintTop_toBottomOf="@id/btn_blog" />
 
         <Button
-            android:id="@+id/btn_nightmode"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginHorizontal="32dp"
-            android:background="@drawable/button_clear"
-            android:drawableStart="@drawable/baseline_night"
-            android:text="Nightmode"
-            android:textAlignment="textStart"
-            android:textColor="@color/black"
-            android:fontFamily="@font/poppinsregular"
-            app:backgroundTint="@null"
-            app:layout_constraintTop_toBottomOf="@id/btn_save" />
-
-        <Button
             android:id="@+id/btn_aboutus"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -131,7 +116,7 @@
             android:textColor="@color/black"
             android:fontFamily="@font/poppinsregular"
             app:backgroundTint="@null"
-            app:layout_constraintTop_toBottomOf="@id/btn_nightmode" />
+            app:layout_constraintTop_toBottomOf="@id/btn_save" />
 
         <Button
             android:id="@+id/button_5"

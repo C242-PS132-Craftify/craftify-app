@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.craftify.craftify_app.di.Injection
 import com.craftify.craftify_app.ui.blog.BlogViewModel
+import com.craftify.craftify_app.ui.craft.DetailCraftViewModel
 import com.craftify.craftify_app.ui.login.LoginViewModel
 import com.craftify.craftify_app.ui.myblog.MyBlogViewModel
 import com.craftify.craftify_app.ui.onboarding.OnboardingViewModel
@@ -48,10 +49,13 @@ class ViewModelFactory(
                 SettingsViewModel(Injection.provideSettingsPreferences(context)) as T
             }
             modelClass.isAssignableFrom(ResultViewModel::class.java) -> {
-                ResultViewModel(Injection.provideResultRepository(context)) as T
+                ResultViewModel(Injection.provideRecommendationRepository(context)) as T
             }
             modelClass.isAssignableFrom(OnboardingViewModel::class.java) -> {
                 OnboardingViewModel(Injection.provideOnboardingRepository(context)) as T
+            }
+            modelClass.isAssignableFrom(DetailCraftViewModel::class.java) -> {
+                DetailCraftViewModel(Injection.provideRecommendationRepository(context)) as T
             }
             else -> throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
         }

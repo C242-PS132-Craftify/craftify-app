@@ -9,8 +9,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.craftify.craftify_app.R
+import com.craftify.craftify_app.data.server.response.RecommendationsItem
 import com.craftify.craftify_app.databinding.FragmentResultBinding
 import com.craftify.craftify_app.databinding.FragmentSavedCraftBinding
 import com.craftify.craftify_app.ui.result.DetectionsAdapter
@@ -19,10 +21,11 @@ import com.craftify.craftify_app.ui.result.ResultViewModel
 import com.craftify.craftify_app.ui.result.ResultViewModelFactory
 import com.craftify.craftify_app.utils.ViewModelFactory
 
-class SavedCraftFragment : Fragment(), OnItemClickListener {
+class SavedCraftFragment : Fragment() {
 
-    private lateinit var binding : FragmentSavedCraftBinding
-    private lateinit var adapter: SavedCraftAdapter
+    private var _binding : FragmentSavedCraftBinding? = null
+    private val binding get() = _binding!!
+    private val adapter: SavedCraftAdapter by lazy { SavedCraftAdapter() }
 
     private val resultModel: ResultViewModel by viewModels {
         ViewModelFactory(requireContext())
@@ -42,32 +45,40 @@ class SavedCraftFragment : Fragment(), OnItemClickListener {
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
-        binding = FragmentSavedCraftBinding.inflate(inflater, container, false)
+        _binding = FragmentSavedCraftBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        val recyclerView = binding.recyclerViewRecommendation
-        recyclerView.layoutManager = LinearLayoutManager(requireContext())
 //
-        resultModel.savedCraft.observe(viewLifecycleOwner) { crafts ->
-            adapter = SavedCraftAdapter(crafts, this)
-            recyclerView.adapter = adapter
+        binding.btnBack.setOnClickListener {
+            findNavController().navigateUp()
+        }
+
+        setupRecyclerView()
+
+        resultModel.getSavedCraft.observe(viewLifecycleOwner) {craft->
+            val listCrafts = craft.map { el->
+                RecommendationsItem(
+                    projectImg = el.projectImg,
+                    projectName = el.projectName
+                )
+            }
+            adapter.submitList(listCrafts)
         }
     }
 
-    companion object {
-
+    private fun setupRecyclerView() {
+        binding.recyclerViewRecommendation.apply {
+            layoutManager = LinearLayoutManager(requireContext())
+            adapter = this@SavedCraftFragment.adapter
+            addItemDecoration(DividerItemDecoration(requireContext(), LinearLayoutManager.VERTICAL))
+        }
     }
 
-    override fun onItemClick(title: String?) {
-        val bundle = Bundle().apply {
-            putString("title", title)
-        }
-        Log.d("ItemClick", "bundle: ${title}")
-
-        findNavController().navigate(R.id.action_savedcraft_to_detail_craft, bundle)
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

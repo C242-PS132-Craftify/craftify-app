@@ -7,12 +7,14 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.craftify.craftify_app.R
 import com.craftify.craftify_app.data.server.response.DetectionsItem
+import java.util.Locale
 
 class DetectionsAdapter(private val detections: List<DetectionsItem>) :
     RecyclerView.Adapter<DetectionsAdapter.DetectionViewHolder>() {
 
     class DetectionViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val textView: TextView = view.findViewById(R.id.textViewDetection)
+        val classTextView: TextView = view.findViewById(R.id.textViewDetectionClass)
+        val scoreTextView: TextView = view.findViewById(R.id.textViewDetectionScore)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DetectionViewHolder {
@@ -23,7 +25,17 @@ class DetectionsAdapter(private val detections: List<DetectionsItem>) :
 
     override fun onBindViewHolder(holder: DetectionViewHolder, position: Int) {
         val detection = detections[position]
-        holder.textView.text = "${position + 1}. ${detection.jsonMemberClass}" // Assuming `box` contains the name.
+
+        val className = detection.jsonMemberClass?.replace("_", " ")?.replaceFirstChar {
+            if (it.isLowerCase()) it.titlecase(
+                Locale.getDefault()
+            ) else it.toString()
+        }
+
+        val percentage = (detection.score?.times(100))?.toInt()
+
+        holder.classTextView.text = "Class: $className"
+        holder.scoreTextView.text = "Score: $percentage%"
     }
 
     override fun getItemCount(): Int = detections.size
