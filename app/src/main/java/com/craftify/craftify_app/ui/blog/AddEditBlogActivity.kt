@@ -56,10 +56,17 @@ class AddEditBlogActivity : AppCompatActivity() {
     private val pickMedia = registerForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri ->
         if (uri != null) {
             Log.d("PhotoPicker", "Selected URI: $uri")
+            imageUri = uri
+            Glide.with(this)
+                .load(uri)
+                .placeholder(R.drawable.ic_logo)
+                .into(binding.ivHeaderImage)
+            uploadedImageUrl = null
         } else {
             Log.d("PhotoPicker", "No media selected")
         }
     }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
