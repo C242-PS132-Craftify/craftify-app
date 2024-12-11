@@ -1,6 +1,7 @@
 package com.craftify.craftify_app.ui.onboarding.screen
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -8,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager2.widget.ViewPager2
+import com.craftify.craftify_app.MainActivity
 import com.craftify.craftify_app.R
 import com.craftify.craftify_app.data.local.SettingPreferences
 import com.craftify.craftify_app.data.local.dataStore
@@ -42,6 +44,8 @@ class ThirdScreen : Fragment() {
             viewPager?.currentItem = 3
             val setting = true
             ViewModel.saveThemeSetting(setting)
+
+            //startActivity(Intent(requireActivity(), MainActivity::class.java))
         }
 
         return binding.root

@@ -23,6 +23,12 @@ class SettingPreferences private constructor(private val dataStore: DataStore<Pr
         }
     }
 
+    suspend fun resetData() {
+        dataStore.edit { preferences ->
+            preferences.clear() // Clears all data in the DataStore
+        }
+    }
+
 
     companion object {
         @Volatile
