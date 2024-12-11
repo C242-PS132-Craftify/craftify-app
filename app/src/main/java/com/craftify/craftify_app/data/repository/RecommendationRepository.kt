@@ -48,6 +48,10 @@ class RecommendationRepository private constructor(
         craftDao.updateFavoriteStatus(projectName,isFavorite)
     }
 
+    suspend fun clearDB(){
+        craftDao.deleteAll()
+    }
+
     companion object {
         @Volatile
         private var instance: RecommendationRepository? = null

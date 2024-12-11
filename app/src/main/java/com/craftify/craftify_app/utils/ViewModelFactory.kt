@@ -29,7 +29,8 @@ class ViewModelFactory(
             modelClass.isAssignableFrom(ProfileViewModel::class.java) -> {
                 ProfileViewModel(
                     Injection.provideAuthRepository(context),
-                    Injection.provideUserRepository(context)
+                    Injection.provideUserRepository(context),
+                    Injection.provideRecommendationRepository(context)
                 ) as T
             }
             modelClass.isAssignableFrom(BlogViewModel::class.java) -> {

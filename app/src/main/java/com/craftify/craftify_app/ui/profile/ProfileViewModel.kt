@@ -7,12 +7,13 @@ import androidx.lifecycle.viewModelScope
 import com.craftify.craftify_app.data.Result
 import com.craftify.craftify_app.data.model.User
 import com.craftify.craftify_app.data.repository.AuthRepository
+import com.craftify.craftify_app.data.repository.RecommendationRepository
 import com.craftify.craftify_app.data.repository.UserRepository
 import com.craftify.craftify_app.data.server.api.cc.response.UploadHeaderImageResponse
 import kotlinx.coroutines.launch
 import okhttp3.MultipartBody
 
-class ProfileViewModel(private val authRepository: AuthRepository, private val userRepository: UserRepository) :ViewModel() {
+class ProfileViewModel(private val authRepository: AuthRepository, private val userRepository: UserRepository, private val recommendationRepository: RecommendationRepository) :ViewModel() {
     private val _currentUser = MutableLiveData<Result<User>>()
     val currentUser: LiveData<Result<User>> = _currentUser
 
@@ -53,6 +54,9 @@ class ProfileViewModel(private val authRepository: AuthRepository, private val u
 
 
     fun logout(){
-        authRepository.logout()
+        viewModelScope.launch {
+            authRepository.logout()
+            recommendationRepository.clearDB()
+        }
     }
 }
