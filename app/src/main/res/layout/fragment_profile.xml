@@ -35,6 +35,7 @@
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:layout_marginStart="4dp"
+                    android:scaleType="centerCrop"
                     android:background="@drawable/button_clear_less_rounded"
                     android:src="@drawable/login_image"
 

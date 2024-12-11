@@ -43,6 +43,10 @@ class ProfileFragment : Fragment() {
         binding.btnSave.setOnClickListener {
             findNavController().navigate(R.id.action_navigation_profile_to_savedFragment)
         }
+
+        binding.swipeRefreshLayout.setOnRefreshListener {
+            viewModel.getUser()
+        }
     }
 
     private fun observeViewModel() {
@@ -87,6 +91,12 @@ class ProfileFragment : Fragment() {
             val intent = Intent(requireContext(), AccountInformationActivity::class.java)
             startActivity(intent)
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.getUser()
+        observeViewModel()
     }
 
     override fun onDestroyView() {

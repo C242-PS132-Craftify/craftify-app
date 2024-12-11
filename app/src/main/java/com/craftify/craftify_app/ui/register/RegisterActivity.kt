@@ -10,17 +10,22 @@ import com.craftify.craftify_app.data.Result
 import com.craftify.craftify_app.databinding.ActivityRegisterBinding
 import com.craftify.craftify_app.ui.login.LoginActivity
 import com.craftify.craftify_app.utils.AuthValidation
+import com.craftify.craftify_app.utils.CustomLoadingDialog
 import com.craftify.craftify_app.utils.ViewModelFactory
 class RegisterActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityRegisterBinding
     private val viewModel: RegisterViewModel by viewModels{ ViewModelFactory(applicationContext) }
 
+    private lateinit var loadingDialog: CustomLoadingDialog
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        loadingDialog = CustomLoadingDialog(this)
 
         setupListeners()
         observerViewModel()
@@ -30,16 +35,20 @@ class RegisterActivity : AppCompatActivity() {
         viewModel.registerResult.observe(this) { result ->
             when (result) {
                 is Result.Success -> {
+                    loadingDialog.dismiss()
                     val intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)
                     finish()
                 }
 
                 is Result.Error -> {
-                    Toast.makeText(this, result.error, Toast.LENGTH_SHORT).show()
+                    loadingDialog.dismiss()
+                    Toast.makeText(this, "Register Error", Toast.LENGTH_SHORT).show()
                 }
 
-                Result.Loading -> {}
+                Result.Loading -> {
+                    loadingDialog.show()
+                }
             }
         }
     }

@@ -79,8 +79,6 @@ class BlogFragment : Fragment() {
                 }
                 is Result.Error -> {
                     binding.swipeRefreshLayout.isRefreshing = false
-                    Toast.makeText(requireContext(), result.error, Toast.LENGTH_SHORT).show()
-                    Log.d("Error", result.error)
                 }
             }
         }

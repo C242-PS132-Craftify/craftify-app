@@ -21,6 +21,7 @@ class LoginViewModel(private val authRepository: AuthRepository) : ViewModel() {
     }
     fun login(email: String, password: String) {
         viewModelScope.launch {
+            _loginResult.postValue(Result.Loading)
             val result = authRepository.login(email, password)
             _loginResult.postValue(result)
             if (result is Result.Success) {

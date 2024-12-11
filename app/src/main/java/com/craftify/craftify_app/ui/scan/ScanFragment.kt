@@ -26,6 +26,7 @@ import com.craftify.craftify_app.R
 import com.craftify.craftify_app.data.server.api.ApiConfig
 import com.craftify.craftify_app.data.server.response.PredictResponse
 import com.craftify.craftify_app.databinding.FragmentScanBinding
+import com.craftify.craftify_app.utils.CustomLoadingDialog
 
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
@@ -41,6 +42,7 @@ class ScanFragment : Fragment() {
     private var imageCapture: ImageCapture? = null
     private var capturedImagePath: String? = null
 
+    private lateinit var loadingDialog: CustomLoadingDialog
 
     private val requestPermissionLauncher =
         registerForActivityResult(
@@ -116,6 +118,7 @@ class ScanFragment : Fragment() {
                 Toast.makeText(requireContext(), "No image to upload!", Toast.LENGTH_SHORT).show()
             }
         }
+        loadingDialog = CustomLoadingDialog(requireContext())
         return binding.root
     }
 
@@ -208,7 +211,7 @@ class ScanFragment : Fragment() {
 
         // Show the ProgressBar
         val progressBar = binding.progressBar // Assuming you're using ViewBinding
-        progressBar.visibility = View.VISIBLE
+        loadingDialog.show()
 
         call.enqueue(object : Callback<PredictResponse> {
             override fun onResponse(
@@ -216,8 +219,7 @@ class ScanFragment : Fragment() {
                 response: Response<PredictResponse>
             ) {
                 if (response.isSuccessful) {
-                    progressBar.visibility = View.GONE
-                    Toast.makeText(requireContext(), "Image uploaded successfully!", Toast.LENGTH_SHORT).show()
+                    loadingDialog.dismiss()
                     Log.d(TAG, "onResponse: success \n $response")
                     val detections = response.body()?.data?.detections?.filterNotNull()
                     val recommendations = response.body()?.data?.recommendations?.filterNotNull()
@@ -227,16 +229,17 @@ class ScanFragment : Fragment() {
                     model.setRecommendationsList(recommendations)
                     findNavController().navigate(R.id.action_to_fragmentReuslt)
                 } else {
-                    Toast.makeText(requireContext(), "Upload failed: ${response.code()}", Toast.LENGTH_SHORT).show()
+                    loadingDialog.dismiss()
+                    Toast.makeText(requireContext(), "Failed to Scan Object", Toast.LENGTH_SHORT).show()
                     Log.d(TAG, "onResponse: failed \n $response")
                     progressBar.visibility = View.GONE
                 }
             }
 
             override fun onFailure(call: Call<PredictResponse>, t: Throwable) {
-                progressBar.visibility = View.GONE
+                loadingDialog.dismiss()
                 Log.d("Errrormessage", "Error: ${t.message}")
-                Toast.makeText(requireContext(), "Error: ${t.message}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "Failed to Scan Object", Toast.LENGTH_SHORT).show()
             }
         })
     }

@@ -10,27 +10,34 @@ import com.craftify.craftify_app.databinding.FragmentLoginBinding
 import com.craftify.craftify_app.utils.ViewModelFactory
 import com.craftify.craftify_app.data.Result
 import com.craftify.craftify_app.ui.register.RegisterActivity
+import com.craftify.craftify_app.utils.CustomLoadingDialog
 
 
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var binding: FragmentLoginBinding
     private val loginViewModel : LoginViewModel by viewModels {ViewModelFactory(applicationContext)}
+    private lateinit var loadingDialog: CustomLoadingDialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = FragmentLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        loadingDialog = CustomLoadingDialog(this)
         loginViewModel.loginResult.observe(this) { result ->
             when (result) {
                 is  Result.Success-> {
+                    loadingDialog.dismiss()
                    navigateToHome()
                 }
                 is Result.Error -> {
-                    Toast.makeText(this,result.error, Toast.LENGTH_SHORT ).show()
+                    loadingDialog.dismiss()
+                    Toast.makeText(this,"Email or Password Incorrect", Toast.LENGTH_SHORT ).show()
                 }
-                else -> {}
+                else -> {
+                    loadingDialog.show()
+                }
             }
         }
 
@@ -41,7 +48,7 @@ class LoginActivity : AppCompatActivity() {
             if (email.isNotEmpty() && password.isNotEmpty()) {
                 loginViewModel.login(email, password)
             } else {
-                Toast.makeText(this, "error",Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Email and Password is Required",Toast.LENGTH_SHORT).show()
             }
         }
 

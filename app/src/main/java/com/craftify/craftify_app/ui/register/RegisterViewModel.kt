@@ -17,6 +17,7 @@ class RegisterViewModel(private val authRepository: AuthRepository) : ViewModel(
 
     fun register(username: String, email: String, password: String) {
         viewModelScope.launch {
+            _registerResult.postValue(Result.Loading)
             val result = authRepository.register(username, email, password)
             _registerResult.postValue(result)
         }
