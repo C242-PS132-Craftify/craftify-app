@@ -55,9 +55,9 @@
         <action
             android:id="@+id/action_navigation_profile_to_savedFragment"
             app:destination="@id/fragment_saved_craft" />
-        <action
-            android:id="@+id/action_navigation_profile_to_myBlogFragment"
-            app:destination="@id/myBlogFragment" />
+<!--        <action-->
+<!--            android:id="@+id/action_navigation_profile_to_myBlogFragment"-->
+<!--            app:destination="@id/myBlogFragment" />-->
         <action
             android:id="@+id/action_navigation_profile_to_settingsFragment"
             app:destination="@id/settingsFragment" />
@@ -114,9 +114,12 @@
             app:destination="@+id/fragment_craft_detail"
             />
     </fragment>
+
+    <fragment
         android:id="@+id/myBlogFragment"
         android:name="com.craftify.craftify_app.ui.myblog.MyBlogFragment"
         android:label="MyBlogFragment" />
+
     <fragment
         android:id="@+id/settingsFragment"
         android:name="com.craftify.craftify_app.ui.settings.SettingsFragment"

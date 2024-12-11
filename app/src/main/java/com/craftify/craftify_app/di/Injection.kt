@@ -5,7 +5,6 @@ import com.craftify.craftify_app.data.local.SettingPreferences
 import com.craftify.craftify_app.data.local.dataStore
 import com.craftify.craftify_app.data.local.room.RecommendationDatabase
 import com.craftify.craftify_app.data.local.preferences.SettingsPreferences
-import com.craftify.craftify_app.data.local.preferences.dataStore
 import com.craftify.craftify_app.data.repository.AuthRepository
 import com.craftify.craftify_app.data.repository.BlogRepository
 import com.craftify.craftify_app.data.repository.SavedCraftRepository
