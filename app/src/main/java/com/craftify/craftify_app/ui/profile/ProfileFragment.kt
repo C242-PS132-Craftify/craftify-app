@@ -79,9 +79,6 @@ class ProfileFragment : Fragment() {
         binding.btnBlog.setOnClickListener {
             findNavController().navigate(R.id.action_navigation_profile_to_myBlogFragment)
         }
-        binding.btnNightmode.setOnClickListener {
-            findNavController().navigate(R.id.action_navigation_profile_to_settingsFragment)
-        }
         binding.btnAboutus.setOnClickListener {
             val intent = Intent(requireContext(), AboutActivity::class.java)
             startActivity(intent)

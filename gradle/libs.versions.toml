@@ -29,6 +29,7 @@ roomCompiler = "2.5.2"
 roomKtx = "2.5.2"
 roomRuntime = "2.5.2"
 swiperefreshlayout = "1.1.0"
+roomCommon = "2.6.1"
 
 
 [libraries]
@@ -66,6 +67,7 @@ retrofit = { module = "com.squareup.retrofit2:retrofit" }
 firebase-firestore = { group = "com.google.firebase", name = "firebase-firestore", version.ref = "firebaseFirestore" }
 androidx-swiperefreshlayout = { group = "androidx.swiperefreshlayout", name = "swiperefreshlayout", version.ref = "swiperefreshlayout" }
 room-compiler = { module = "android.arch.persistence.room:compiler", version.ref = "compilerVersion" }
+androidx-room-common = { group = "androidx.room", name = "room-common", version.ref = "roomCommon" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

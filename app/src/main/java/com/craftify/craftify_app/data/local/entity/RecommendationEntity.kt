@@ -6,13 +6,21 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "saved_craft")
 data class RecommendationEntity(
-    //@PrimaryKey(autoGenerate = true) val id: Int,
+    @PrimaryKey(autoGenerate = true)
+    val id: Int = 0,
 
-    @field:ColumnInfo(name = "title")
-    @PrimaryKey
-    val title: String,
+    @ColumnInfo(name = "project_img")
+    val projectImg: String? = null,
 
-    @field:ColumnInfo(name = "image")
-    var image: String
+    @ColumnInfo(name = "project_materials")
+    val projectMaterials: List<String?>? = null,
 
+    @ColumnInfo(name = "project_name")
+    val projectName: String? = null,
+
+    @ColumnInfo(name = "project_recipe")
+    val projectRecipe: List<String?>? = null,
+
+    @ColumnInfo(name = "is_favorite")
+    val isFavorite : Boolean
 )
