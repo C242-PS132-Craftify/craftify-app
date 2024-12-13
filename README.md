@@ -5,7 +5,7 @@ Our primary research question was: How can we use technology to encourage childr
 
 ## Table of Contents
 - [MD Team Members](#md-team-members)
-- [Techology](#technology)
+- [Technology](#technology)
 - [Screenshots](#screenshots)
 - [Video Demonstration](#video-demonstration)
 - [Try Craftify Now](#try-craftify-now)
