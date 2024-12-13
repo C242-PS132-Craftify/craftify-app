@@ -16,7 +16,8 @@ Our primary research question was: How can we use technology to encourage childr
 | (MD) A403B4KY1813 |  I Gede Igo Wisnu Wardana            |  Politeknik Negeri Bali          | 
 | (MD) A014B4KY1821 |  I Gusti Agung Ramananda Wira Dharma | Udayana University               | 
 
-##Technology
+
+## Technology
 - Kotlin
 - Retrofit
 - Camera X
